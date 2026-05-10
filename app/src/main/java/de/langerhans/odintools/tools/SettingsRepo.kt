@@ -2,6 +2,7 @@ package de.langerhans.odintools.tools
 
 import de.langerhans.odintools.BuildConfig
 import javax.inject.Inject
+import java.util.Locale
 
 class SettingsRepo @Inject constructor(
     private val executor: ShellExecutor,
@@ -42,7 +43,7 @@ class SettingsRepo @Inject constructor(
     }
 
     fun setSfSaturation(value: Float) {
-        executor.executeAsRoot("service call SurfaceFlinger 1022 f ${String.format("%.1f", value)}")
+        executor.executeAsRoot("service call SurfaceFlinger 1022 f ${String.format(Locale.ROOT, "%.1f", value)}")
     }
 
     fun enableChargingSeparation() {
